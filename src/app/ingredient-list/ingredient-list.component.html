@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-sm-2 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
+    <ul class="list-group">
+      <a *appFor="let ingredient of ingredients"
+         class="list-group-item">
+        {{ingredient.name}}
+        <div class="input-group">
+          <div class="input-group-append">
+            <button class="btn btn-default"
+                    (click)="onDecrement(ingredient)">
+              <i class="fa fa-minus"></i>
+            </button>
+          </div>
+          <input type="text" [(ngModel)]="ingredient.quantity" class="form-control input-group-sm">
+          <div class="input-group-prepend">
+            <button class="btn btn-default"
+                    (click)="onIncrement(ingredient)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </a>
+    </ul>
+    <button class="btn btn-default" (click)="onAddToShoppingCart()">Add to Cart</button>
+  </div>
+  <div class="col-sm-9 col-md-7 col-lg-7">
+    <app-ingredient-detail [addedIngredients]="addedIngredients"></app-ingredient-detail>
+  </div>
+</div>
+

@@ -1,0 +1,43 @@
+  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+    <div class="collapse navbar-collapse float-left" id="navbarSupportedContent">
+      <ul class="navbar-nav ">
+        <li routerLinkActive="active"
+            class="nav-item">
+          <a routerLink="/ingredients"
+             class="nav-link">Ingredients</a>
+        </li>
+        <li routerLinkActive="active"
+            class="nav-item">
+          <a routerLink="/recipes"
+             class="nav-link"
+          (click)="onCheckRestricted()">Recipes</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="authService.isLoggedIn">
+          <li
+              class="nav-item">
+            <span class="nav-link text-info">Signed in as: {{authService.getCurrentUserEmail() | async }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link bg-info">Checkout
+              <span class="badge bg-info">
+                {{cartItemsObservable | async}}
+              <i class="fa fa-shopping-cart"></i>
+            </span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="!authService.isLoggedIn">
+          <li routerLinkActive="active"
+              class="nav-item"><a routerLink="/register" class="nav-link">Register</a></li>
+          <li routerLinkActive="active"
+              class="nav-item"><a routerLink="/signin" class="nav-link">Sign-in</a></li>
+        </ng-container>
+        <li *ngIf="authService.isLoggedIn"
+            class="nav-item"><a routerLink="/signin" class="nav-link" (click)="authService.signOutUser()">Sign-out</a></li>
+      </ul>
+    </div>
+  </nav>
+

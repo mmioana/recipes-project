@@ -1,0 +1,10 @@
+<div class="jumbotron">
+  <h1 class="display-4">Shopping Cart Content</h1>
+  <hr class="my-4">
+  <p class="lead">Ingredients</p>
+  <ul>
+    <li *appFor="let addedIngredient of addedIngredients">
+      {{addedIngredient.name}} ({{addedIngredient.quantity}})
+    </li>
+  </ul>
+</div>

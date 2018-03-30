@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-2 col-md-3 col-lg-3 offset-sm-1 offset-md-1 offset-lg-1">
+        <div class="input-group">
+          <input type="search"
+                 placeholder="Search..."
+                 class="form-control">
+          <div class="input-group-append">
+            <button type="submit" class="btn">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        <ul class="list-group">
+          <a *ngFor="let recipe of recipes"
+             class="list-group-item list-group-item-action"
+             (click)="onShowDetails(recipe)">
+            {{recipe.name}}
+            <a style="background-color: transparent"
+               class="float-right"
+               (click)="onDelete(recipe)">
+              <i class="fa fa-close"></i>
+            </a>
+          </a>
+        </ul>
+    </div>
+    <div class="col-sm-9 col-md-7 col-lg-7">
+      <router-outlet class="pull-right"></router-outlet>
+    </div>
+</div>
